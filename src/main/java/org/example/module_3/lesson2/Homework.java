@@ -1,5 +1,6 @@
 package org.example.module_3.lesson2;
 
+import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,24 +44,26 @@ public class Homework {
         //Написать метод logging, который залогирует все эти операции по нужным уровням логирования.
     }
 
-    public static void runExceptions() {
-        //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
-
+    public static void runExceptions() throws Exception {
+        throw new Exception("Опачки");
     }
 
     public static void runExceptions2() {
-        //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
+        try {
+            throw new RuntimeException("Опачки");
+        }catch (RuntimeException e){
+            System.out.println("поймали unchecked exception:  RuntimeException");
+        }
     }
-
+    @SneakyThrows
     public static void runExceptions3() {
-        //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
+        throw new Exception("Опачки");
+
 
     }
-
+    @SneakyThrows
     public static void myGame() {
-        //FileWriter writer = new FileWriter("1.txt");
+        @Cleanup
+        FileWriter writer = new FileWriter("1.txt");
     }
 }
