@@ -1,11 +1,12 @@
 package org.example.module_3.lesson2;
 
+import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileWriter;
 
-
+@Slf4j
 public class Homework {
     public static void main(String[] args) {
         //Внимание! Все домашки теперь принимаются в качестве pull request. Репозитории больше смотреть не буду :)
@@ -43,24 +44,40 @@ public class Homework {
         //Написать метод logging, который залогирует все эти операции по нужным уровням логирования.
     }
 
-    public static void runExceptions() {
-        //throw new Exception("Опачки");
+    public static void runExceptions() throws Exception {
+        throw new Exception("Опачки");
         //throw new RuntimeException("Опачки");
 
     }
 
     public static void runExceptions2() {
         //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
+        try {
+            throw new RuntimeException("Опачки");
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
+    @SneakyThrows
     public static void runExceptions3() {
-        //throw new Exception("Опачки");
+        throw new Exception("Опачки");
         //throw new RuntimeException("Опачки");
 
     }
 
+    @SneakyThrows
     public static void myGame() {
-        //FileWriter writer = new FileWriter("1.txt");
+        @Cleanup FileWriter writer = new FileWriter("1.txt");
+    }
+
+    public static void logging() {
+        int firstlevel = 18;
+        log.error("Критическая ошибка системы");
+        log.info("Петров Иван Иванович, сумма на счете 1_000_000 рублей");
+        log.debug("Обращение в интеграцию сервиса \"Мой Мир\"");
+        log.warn("Клиент не найден, операция не может быть обработана");
+        log.trace("Значение переменной firstLevel {}", firstlevel);
     }
 }
