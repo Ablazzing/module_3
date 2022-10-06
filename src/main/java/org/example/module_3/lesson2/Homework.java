@@ -43,7 +43,7 @@ public class Homework {
         //Написать метод logging, который залогирует все эти операции по нужным уровням логирования.
     }
 
-    public static void runExceptions() throws Exception {
+    public static void runExceptions() {
         //throw new Exception("Опачки");
         //throw new RuntimeException("Опачки");
 
