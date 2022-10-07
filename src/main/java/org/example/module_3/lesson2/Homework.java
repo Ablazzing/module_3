@@ -1,11 +1,12 @@
 package org.example.module_3.lesson2;
 
+import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileWriter;
 
-
+@Slf4j
 public class Homework {
     public static void main(String[] args) {
         //Внимание! Все домашки теперь принимаются в качестве pull request. Репозитории больше смотреть не буду :)
@@ -43,24 +44,44 @@ public class Homework {
         //Написать метод logging, который залогирует все эти операции по нужным уровням логирования.
     }
 
-    public static void runExceptions() {
-        //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
-
+    public static void runExceptions() throws Exception {
+        throw new Exception("Опачки");
     }
 
     public static void runExceptions2() {
-        //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
+        try {
+            throw new Exception("Опачки");
+        } catch (Exception e) {
+            System.out.println("что-то пр=ошло не так: "+e);
+        }
     }
 
+    @SneakyThrows
     public static void runExceptions3() {
-        //throw new Exception("Опачки");
-        //throw new RuntimeException("Опачки");
-
+        throw new Exception("Опачки");
     }
 
+    @SneakyThrows
     public static void myGame() {
-        //FileWriter writer = new FileWriter("1.txt");
+        @Cleanup
+        FileWriter writer = new FileWriter("1.txt");
+    }
+
+    public static void logging(String event) {
+        // можно и через свитч, но мне нравятся ифы
+        if (event.equals("Критическая ошибка системы")) {
+            log.error("Critical ERROR! ATTENTION");
+        } else if (event.equals("Петров Иван Иванович, сумма на счете 1_000_000 рублей")) {
+            log.trace(event);
+        } else if (event.equals("Обращение в интеграцию сервиса \"Мой Мир\"")) {
+            log.debug(event);
+        } else if (event.equals("Клиент не найден, операция не может быть обработана")) {
+            log.warn(event);
+        } else if (event.equals("Значение переменной firstLevel")) {
+            log.trace(event);
+        } else {
+            log.trace("undefined event: {}",event);
+        }
+
     }
 }
