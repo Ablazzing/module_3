@@ -1,6 +1,5 @@
-package maven_tutorial;
+package maven_tutorial.unit;
 
-import org.junit.Test;
 
 public class TestClass {
 
