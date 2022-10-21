@@ -6,6 +6,7 @@ import org.example.module_3.lesson7.homework.BrickFactory;
 import org.example.module_3.lesson7.homework.Worker;
 import org.example.module_3.lesson7.homework.WorkerTiredException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -18,9 +19,10 @@ import java.util.List;
 public class BrickFactoryTest {
 
     @Mock
-    Worker workerMock = Mockito.mock(Worker.class);
+    Worker  workerMock = Mockito.mock(Worker.class);
 
     @Test
+    @DisplayName("Ожидание ошибки ")
     @SneakyThrows
     public void checkErrorBrickFactory() {
         BrickFactory brickFactory = new BrickFactory(workerMock, 1000, 1000);
@@ -29,6 +31,7 @@ public class BrickFactoryTest {
     }
 
     @Test
+    @DisplayName("Наличие или отсутствие работника")
     public void checkWorkerExist() {
         boolean actual = new BrickFactory(null, 10, 10).checkFactoryHasWorker();
         Assertions.assertEquals(false, actual);
@@ -37,6 +40,7 @@ public class BrickFactoryTest {
     }
 
     @Test
+    @DisplayName("Создание 10 кирпичей")
     public void checkBricksNumber() throws WorkerTiredException {
         BrickFactory brickFactory = new BrickFactory(workerMock, 10000, 10000);
         List<Brick> bricks = new ArrayList<>();
@@ -50,6 +54,7 @@ public class BrickFactoryTest {
     }
 
     @ParameterizedTest
+    @DisplayName("Читаем количество")
     @CsvFileSource(resources = "/factory_sources.csv", delimiter = ',')
     @SneakyThrows
     public void paramFactoryTest(Integer sandCount, Integer waterCount, Integer expected) {

@@ -1,11 +1,7 @@
 package maven_tutorial.integration;
 
 import lombok.SneakyThrows;
-import org.example.module_3.lesson3.Worker;
-import org.example.module_3.lesson7.homework.Brick;
-import org.example.module_3.lesson7.homework.BrickFactory;
-import org.example.module_3.lesson7.homework.NotEnoughResourcesException;
-import org.example.module_3.lesson7.homework.WorkerTiredException;
+import org.example.module_3.lesson7.homework.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
