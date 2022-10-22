@@ -68,6 +68,4 @@ public class BrickFactoryTest {
         Assertions.assertEquals(expected, actual);
     }
 
-
-
 }
