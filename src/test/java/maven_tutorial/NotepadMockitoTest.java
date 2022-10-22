@@ -3,7 +3,7 @@ package maven_tutorial;
 import org.assertj.core.api.Assertions;
 import org.example.module_3.lesson5.Notepad;
 import org.example.module_3.lesson5.Redactor;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.OngoingStubbing;
 
@@ -19,6 +19,7 @@ public class NotepadMockitoTest {
 
         Notepad notepad = new Notepad(mock);
         boolean isFind = notepad.findText("hello people", "people");
+
         Assertions.assertThat(isFind).isTrue();
     }
 }
